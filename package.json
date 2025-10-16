@@ -4,19 +4,20 @@
   "description": "Universal FHEVM SDK for building privacy-preserving dApps",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "scripts": {
-    "dev": "npm run dev --workspace=@fhevm/sdk",
-    "build": "npm run build --workspace=@fhevm/sdk",
+    "build": "npm run build:sdk",
     "build:sdk": "npm run build --workspace=@fhevm/sdk",
+    "dev": "npm run dev --workspace=@fhevm/sdk",
+    "dev:nextjs": "npm run dev --workspace=fhevm-nextjs-demo",
     "test": "npm run test --workspace=@fhevm/sdk",
     "type-check": "npm run type-check --workspace=@fhevm/sdk",
-    "clean": "rm -rf packages/*/dist packages/*/node_modules node_modules",
-    "demo:start": "echo 'Visit live demo at: https://private-rental-matching.vercel.app/'",
-    "demo:clone": "git clone https://github.com/SchuylerPouros/private-rental-matching.git demo-app && cd demo-app && npm install",
-    "compile": "cd ../private-rental-matching && npm run compile",
-    "deploy": "cd ../private-rental-matching && npm run deploy"
+    "clean": "rm -rf packages/*/dist packages/*/node_modules examples/*/node_modules examples/*/.next node_modules cache artifacts",
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deploy.ts --network sepolia",
+    "test:contracts": "npx hardhat test"
   },
   "repository": {
     "type": "git",
@@ -37,7 +38,14 @@
   "author": "FHEVM Community",
   "license": "MIT",
   "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@types/node": "^20.0.0",
+    "dotenv": "^16.3.0",
+    "hardhat": "^2.19.0",
     "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "@fhevm/solidity": "^0.5.0"
   },
   "engines": {
     "node": ">=18.0.0",
