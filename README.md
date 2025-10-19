@@ -255,7 +255,7 @@ Vue 3 Composition API example with the SDK.
 |----------|-----|
 | **Live Demo** | https://private-rental-matching.vercel.app/ |
 | **GitHub Repository** | https://github.com/SchuylerPouros/fhevm-react-template |
-| **Demo Video** | [demo.mp4](./demo.mp4) |
+| **Demo Video** | [demo1.mp4 demo2.mp4 demo3.mp4] |
 | **Contract Address** | `0x980051585b6DC385159BD53B5C78eb7B91b848E5` |
 | **Sepolia Explorer** | https://sepolia.etherscan.io/address/0x980051585b6DC385159BD53B5C78eb7B91b848E5 |
 
@@ -341,7 +341,7 @@ MIT License - see [LICENSE](./LICENSE) for details.
 For questions and support:
 - Open an issue on [GitHub](https://github.com/SchuylerPouros/fhevm-react-template/issues)
 - Check the [documentation](./SETUP_GUIDE.md)
-- Watch the [demo video](./demo.mp4)
+- Watch the [demo video]
 
 ---
 
