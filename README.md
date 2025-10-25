@@ -14,7 +14,8 @@ This repository contains:
 3. **Smart Contracts**: Example FHE-enabled contracts
 4. **Complete Documentation**: Everything you need to get started
 
- **Live Demo**: [https://private-rental-matching.vercel.app/](https://private-rental-matching.vercel.app/)
+**Live Demo**: [https://private-rental-matching.vercel.app/](https://private-rental-matching.vercel.app/)
+
 **Demo Video**: [demo1.mp4 demo2.mp4 demo3.mp4]
 
 ---
