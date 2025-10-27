@@ -1,26 +1,26 @@
-# 🔐 FHEVM Universal SDK - Fully Homomorphic Encryption for Web3
+# Universal FHEVM SDK - Fully Homomorphic Encryption for Web3
 
-> **Production-ready FHEVM SDK for building privacy-preserving decentralized applications**
+> Production-ready FHEVM SDK for building privacy-preserving decentralized applications
 
 A comprehensive SDK and template collection for integrating Zama's fhEVM technology into your blockchain applications. This project provides framework-agnostic core utilities, React hooks, and complete examples demonstrating privacy-preserving smart contract interactions.
 
 ---
 
-## 🎯 What is This?
+## What is This?
 
 This repository contains:
 1. **Universal FHEVM SDK** (`packages/fhevm-sdk`): A reusable, framework-agnostic SDK for FHE encryption/decryption
-2. **Example Templates**: Next.js, React, and Vue demonstrations
+2. **Example Templates**: Next.js demonstrations with complete SDK integration
 3. **Smart Contracts**: Example FHE-enabled contracts
 4. **Complete Documentation**: Everything you need to get started
 
 **Live Demo**: [https://private-rental-matching.vercel.app/](https://private-rental-matching.vercel.app/)
 
-**Demo Video**: [demo1.mp4 demo2.mp4 demo3.mp4]
+**Demo Videos**: Available in repository root (demo1.mp4, demo2.mp4, demo3.mp4)
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Node.js >= 18.0.0
@@ -39,7 +39,7 @@ cd fhevm-react-template
 npm install
 ```
 
-### Compile & Deploy Contracts
+### Compile and Deploy Contracts
 
 ```bash
 # Compile Solidity contracts
@@ -54,101 +54,136 @@ npm run deploy
 ### Launch Frontend Template
 
 ```bash
-# Start Next.js template (recommended)
+# Start Next.js demo (recommended)
 npm run dev:nextjs
 
-# Or React template
-npm run dev:react
-
-# Or Vue template
-npm run dev:vue
+# Or navigate to the example directory
+cd examples/nextjs-demo
+npm install
+npm run dev
 ```
 
-Visit `http://localhost:3000` to see the app running!
+Visit `http://localhost:3000` to see the application running!
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 fhevm-react-template/
 ├── packages/
-│   └── fhevm-sdk/              # 🎯 Universal SDK Package
+│   └── fhevm-sdk/                    # Universal SDK Package
 │       ├── src/
-│       │   ├── core/           # Framework-agnostic core
-│       │   │   ├── client.ts   # Main SDK client
-│       │   │   ├── encryption.ts
-│       │   │   └── decryption.ts
-│       │   ├── react/          # React hooks & adapters
+│       │   ├── core/                 # Framework-agnostic core
+│       │   │   ├── client.ts         # Main SDK client
+│       │   │   └── index.ts
+│       │   ├── react/                # React hooks and adapters
 │       │   │   ├── hooks/
 │       │   │   │   ├── useFhevm.ts
 │       │   │   │   ├── useEncrypt.ts
 │       │   │   │   └── useDecrypt.ts
-│       │   │   ├── components/
-│       │   │   └── provider.tsx
-│       │   └── types/          # TypeScript definitions
+│       │   │   ├── provider.tsx
+│       │   │   └── index.ts
+│       │   └── types/                # TypeScript definitions
 │       ├── package.json
 │       └── README.md
 │
 ├── examples/
-│   ├── nextjs-demo/            # Next.js 14 demonstration
+│   ├── nextjs-demo/                  # Next.js 14 demonstration
 │   │   ├── app/
-│   │   │   ├── page.tsx        # Main demo page
-│   │   │   ├── layout.tsx      # Root layout
-│   │   │   └── providers.tsx   # FHEVM Provider setup
+│   │   │   ├── layout.tsx            # Root layout
+│   │   │   ├── page.tsx              # Main demo page
+│   │   │   ├── providers.tsx         # FHEVM Provider setup
+│   │   │   ├── globals.css           # Global styles
+│   │   │   └── api/                  # API routes
+│   │   │       ├── fhe/
+│   │   │       │   ├── route.ts      # FHE operations route
+│   │   │       │   ├── encrypt/route.ts  # Encryption endpoint
+│   │   │       │   ├── decrypt/route.ts  # Decryption endpoint
+│   │   │       │   └── compute/route.ts  # Computation endpoint
+│   │   │       └── keys/route.ts     # Key management
+│   │   ├── components/               # React components
+│   │   │   ├── ui/                   # Base UI components
+│   │   │   │   ├── Button.tsx
+│   │   │   │   ├── Input.tsx
+│   │   │   │   └── Card.tsx
+│   │   │   ├── fhe/                  # FHE feature components
+│   │   │   │   ├── FHEProvider.tsx
+│   │   │   │   ├── EncryptionDemo.tsx
+│   │   │   │   ├── ComputationDemo.tsx
+│   │   │   │   └── KeyManager.tsx
+│   │   │   └── examples/             # Use case examples
+│   │   │       ├── BankingExample.tsx
+│   │   │       └── MedicalExample.tsx
+│   │   ├── lib/                      # Utility libraries
+│   │   │   ├── fhe/                  # FHE integration
+│   │   │   │   ├── client.ts         # Client-side FHE
+│   │   │   │   ├── server.ts         # Server-side FHE
+│   │   │   │   ├── keys.ts           # Key management
+│   │   │   │   └── types.ts          # Type definitions
+│   │   │   └── utils/                # Utility functions
+│   │   │       ├── security.ts       # Security utilities
+│   │   │       └── validation.ts     # Validation utilities
+│   │   ├── hooks/                    # Custom hooks
+│   │   │   ├── useFHE.ts
+│   │   │   ├── useEncryption.ts
+│   │   │   └── useComputation.ts
+│   │   ├── types/                    # TypeScript types
+│   │   │   ├── fhe.ts
+│   │   │   └── api.ts
 │   │   ├── package.json
 │   │   └── README.md
-│   ├── RentalMatching/         # Production rental platform
-│   └── README.md               # Examples documentation
+│   ├── RentalMatching/               # Production rental platform
+│   └── README.md                     # Examples documentation
 │
-├── contracts/                  # Example FHE contracts
+├── contracts/                        # Example FHE contracts
 │   ├── PrivateRentalMatching.sol
-│   └── interfaces/
+│   └── README.md
 │
-├── scripts/                    # Deployment scripts
+├── scripts/                          # Deployment scripts
 │   ├── deploy.ts
-│   └── interact.ts
+│   └── README.md
 │
-├── test/                       # Contract tests
+├── test/                             # Contract tests
 │   └── PrivateRentalMatching.test.ts
 │
-├── hardhat.config.ts           # Hardhat configuration
-├── package.json                # Root package.json
-├── README.md                   # This file
-├── BOUNTY_SUBMISSION.md        # Bounty submission details
-└── SETUP_GUIDE.md              # Detailed setup guide
+├── hardhat.config.ts                 # Hardhat configuration
+├── package.json                      # Root package.json
+├── README.md                         # This file
+├── BOUNTY_SUBMISSION.md              # Bounty submission details
+└── SETUP_GUIDE.md                    # Detailed setup guide
 ```
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
 ### Universal SDK Package
-- ✅ **Framework-Agnostic Core**: Use with React, Vue, Angular, or vanilla JS
-- ✅ **Type-Safe**: Full TypeScript support with comprehensive types
-- ✅ **Modular API**: Import only what you need
-- ✅ **Wagmi-like Design**: Familiar hook patterns for React developers
-- ✅ **Zero Dependencies**: Core has no external dependencies
+- Framework-Agnostic Core: Use with React, Vue, Angular, or vanilla JS
+- Type-Safe: Full TypeScript support with comprehensive types
+- Modular API: Import only what you need
+- Wagmi-like Design: Familiar hook patterns for React developers
+- Zero Dependencies: Core has no external dependencies
 
-### Encryption & Decryption
-- ✅ **Easy Encryption**: Simple `encryptInput()` helper
-- ✅ **Batch Operations**: Encrypt multiple values at once
-- ✅ **User Decryption**: EIP-712 signature-based decryption
-- ✅ **Public Decryption**: No-signature decryption for public data
-- ✅ **Automatic Verification**: Built-in ciphertext validation
+### Encryption and Decryption
+- Easy Encryption: Simple encrypt helper functions
+- Batch Operations: Encrypt multiple values at once
+- User Decryption: EIP-712 signature-based decryption
+- Public Decryption: No-signature decryption for public data
+- Automatic Verification: Built-in ciphertext validation
 
 ### Developer Experience
-- ✅ **React Hooks**: `useFhevm()`, `useEncrypt()`, `useDecrypt()`
-- ✅ **Ready Components**: Copy-paste encryption/decryption components
-- ✅ **Error Handling**: Graceful error messages and retry logic
-- ✅ **Loading States**: Built-in loading indicators
-- ✅ **IntelliSense**: Full autocomplete support
+- React Hooks: `useFhevm()`, `useEncrypt()`, `useDecrypt()`
+- Ready Components: Copy-paste encryption/decryption components
+- Error Handling: Graceful error messages and retry logic
+- Loading States: Built-in loading indicators
+- IntelliSense: Full autocomplete support
 
 ### Production Ready
-- ✅ **Tested**: Comprehensive test suite
-- ✅ **Documented**: JSDoc comments on all public APIs
-- ✅ **Deployed**: Live demo on Vercel and GitHub Pages
-- ✅ **Optimized**: Tree-shakeable for minimal bundle size
+- Tested: Comprehensive test suite
+- Documented: JSDoc comments on all public APIs
+- Deployed: Live demo on Vercel
+- Optimized: Tree-shakeable for minimal bundle size
 
 ---
 
@@ -1277,7 +1312,7 @@ interface DecryptedValue {
 
 ---
 
-## 🎓 Example Templates
+## Example Templates
 
 All examples are located in the `examples/` directory and demonstrate different ways to integrate the FHEVM SDK.
 
@@ -1288,10 +1323,13 @@ A complete Next.js 14 application showcasing the FHEVM SDK with App Router:
 **Features:**
 - Full FHEVM SDK integration with React hooks
 - Interactive encryption/decryption UI
-- Support for multiple FHE types (`euint8`, `euint16`, `euint32`)
+- Support for multiple FHE types (euint8, euint16, euint32)
 - Real-time state management with loading indicators
 - Beautiful gradient UI with Tailwind CSS
 - TypeScript support with full type safety
+- Complete API routes for server-side operations
+- Reusable FHE components and custom hooks
+- Banking and medical use case examples
 
 **Running the Example:**
 
@@ -1311,7 +1349,10 @@ Visit `http://localhost:3000` to see the demo in action.
 **Key Files:**
 - `app/providers.tsx` - FhevmProvider setup
 - `app/page.tsx` - Main component using SDK hooks
-- `package.json` - Dependencies and scripts
+- `app/api/fhe/` - API routes for encryption/decryption
+- `components/fhe/` - Reusable FHE components
+- `lib/fhe/` - FHE utility functions
+- `hooks/` - Custom React hooks
 
 ### 2. Rental Matching Platform (`examples/RentalMatching/`)
 
@@ -1438,12 +1479,12 @@ The examples demonstrate several real-world scenarios:
 
 ---
 
-## 🔗 Links
+## Links
 
 | Resource | URL |
 |----------|-----|
-| **GitHub Repository** | <your-repository-url> |
-| **Demo Video** | Available in repository |
+| **GitHub Repository** | Your repository URL |
+| **Demo Videos** | Available in repository root |
 | **Contract Address** | `0x980051585b6DC385159BD53B5C78eb7B91b848E5` |
 | **Sepolia Explorer** | https://sepolia.etherscan.io/address/0x980051585b6DC385159BD53B5C78eb7B91b848E5 |
 | **Examples Directory** | `./examples/` |
@@ -1451,7 +1492,7 @@ The examples demonstrate several real-world scenarios:
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run all tests
@@ -1469,64 +1510,64 @@ npm run test:coverage
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend**: Next.js 14, React 18, TypeScript, Tailwind CSS
 - **Web3**: wagmi, viem, RainbowKit
 - **FHE**: Zama fhEVM SDK
 - **Smart Contracts**: Solidity, Hardhat
-- **Deployment**: Vercel, GitHub Pages
+- **Deployment**: Vercel
 
 ---
 
-## 🏆 Zama Bounty Program
+## Zama Bounty Program
 
-This project is submitted for the **Zama FHEVM SDK Bounty**.
+This project is submitted for the Zama FHEVM SDK Bounty.
 
 ### Requirements Met:
-- ✅ Universal SDK package importable into any dApp
-- ✅ Initialization, encryption, and decryption utilities
-- ✅ EIP-712 signature support for userDecrypt
-- ✅ Wagmi-like modular API structure
-- ✅ Reusable components for common scenarios
-- ✅ Clean, well-documented, and extensible code
-- ✅ Complete setup from root directory
-- ✅ Example templates with Next.js
-- ✅ Video demonstration
-- ✅ Deployment links in README
+- Universal SDK package importable into any application
+- Initialization, encryption, and decryption utilities
+- EIP-712 signature support for userDecrypt
+- Wagmi-like modular API structure
+- Reusable components for common scenarios
+- Clean, well-documented, and extensible code
+- Complete setup from root directory
+- Example templates with Next.js
+- Video demonstration
+- Deployment links in README
 
 See [BOUNTY_SUBMISSION.md](./BOUNTY_SUBMISSION.md) for detailed checklist.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch (git checkout -b feature/amazing-feature)
+3. Commit your changes (git commit -m 'Add amazing feature')
+4. Push to the branch (git push origin feature/amazing-feature)
 5. Open a Pull Request
 
 ---
 
-## 📄 License
+## License
 
 MIT License - see [LICENSE](./LICENSE) for details.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- **Zama** for creating fhEVM and hosting this bounty
-- **wagmi** and **RainbowKit** for API design inspiration
-- **Next.js** team for the excellent framework
-- **Community** for feedback and support
+- Zama for creating fhEVM and hosting this bounty
+- wagmi and RainbowKit for API design inspiration
+- Next.js team for the excellent framework
+- Community for feedback and support
 
 ---
 
-## 📞 Support
+## Support
 
 For questions and support:
 - Open an issue on GitHub
@@ -1536,4 +1577,4 @@ For questions and support:
 
 ---
 
-**Built with ❤️ for privacy-preserving Web3**
+**Built for privacy-preserving Web3**
