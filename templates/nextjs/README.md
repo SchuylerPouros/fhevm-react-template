@@ -40,29 +40,54 @@ Visit `http://localhost:3000` to see the template in action.
 
 ### Directory Structure
 ```
-app/
-├── layout.tsx              # Root layout
-├── page.tsx                # Home page
-├── providers.tsx           # FHEVM Provider
-├── globals.css             # Global styles
-└── api/                    # API routes
-    ├── fhe/
-    │   ├── encrypt/        # Encryption endpoint
-    │   ├── decrypt/        # Decryption endpoint
-    │   └── compute/        # Computation endpoint
-    └── keys/               # Key management
-
-components/
-├── ui/                     # UI components
-├── fhe/                    # FHE components
-└── examples/               # Example components
-
-lib/
-├── fhe/                    # FHE utilities
-└── utils/                  # Helper functions
-
-hooks/                      # Custom React hooks
-types/                      # Type definitions
+src/
+├── app/                        # App Router (Next.js 14)
+│   ├── layout.tsx              # Root layout
+│   ├── page.tsx                # Home page
+│   ├── providers.tsx           # FHEVM Provider
+│   └── api/                    # API routes
+│       ├── fhe/
+│       │   ├── route.ts        # FHE operations route
+│       │   ├── encrypt/route.ts # Encryption endpoint
+│       │   ├── decrypt/route.ts # Decryption endpoint
+│       │   └── compute/route.ts # Computation endpoint
+│       └── keys/route.ts       # Key management
+│
+├── components/                 # React components
+│   ├── ui/                     # Base UI components
+│   │   ├── Button.tsx
+│   │   ├── Input.tsx
+│   │   └── Card.tsx
+│   ├── fhe/                    # FHE feature components
+│   │   ├── FHEProvider.tsx
+│   │   ├── EncryptionDemo.tsx
+│   │   ├── ComputationDemo.tsx
+│   │   └── KeyManager.tsx
+│   └── examples/               # Use case examples
+│       ├── BankingExample.tsx
+│       └── MedicalExample.tsx
+│
+├── lib/                        # Utility libraries
+│   ├── fhe/                    # FHE integration
+│   │   ├── client.ts           # Client-side FHE
+│   │   ├── server.ts           # Server-side FHE
+│   │   ├── keys.ts             # Key management
+│   │   └── types.ts            # Type definitions
+│   └── utils/                  # Utility functions
+│       ├── security.ts         # Security utilities
+│       └── validation.ts       # Validation utilities
+│
+├── hooks/                      # Custom hooks
+│   ├── useFHE.ts               # FHE operations hook
+│   ├── useEncryption.ts        # Encryption hook
+│   └── useComputation.ts       # Computation hook
+│
+├── types/                      # TypeScript types
+│   ├── fhe.ts                  # FHE-related types
+│   └── api.ts                  # API type definitions
+│
+└── styles/                     # Style files
+    └── globals.css
 ```
 
 ## Integration Guide
