@@ -84,56 +84,90 @@ fhevm-react-template/
 │       │   │   │   └── useDecrypt.ts
 │       │   │   ├── provider.tsx
 │       │   │   └── index.ts
+│       │   ├── adapters/             # Framework adapters
+│       │   │   ├── vue.ts            # Vue 3 composables
+│       │   │   └── index.ts
+│       │   ├── utils/                # Utility functions
+│       │   │   ├── encryption.ts     # Encryption utilities
+│       │   │   ├── decryption.ts     # Decryption utilities
+│       │   │   └── index.ts
 │       │   └── types/                # TypeScript definitions
 │       ├── package.json
+│       ├── tsconfig.json
 │       └── README.md
 │
 ├── examples/
 │   ├── nextjs-demo/                  # Next.js 14 demonstration
-│   │   ├── app/
-│   │   │   ├── layout.tsx            # Root layout
-│   │   │   ├── page.tsx              # Main demo page
-│   │   │   ├── providers.tsx         # FHEVM Provider setup
-│   │   │   ├── globals.css           # Global styles
-│   │   │   └── api/                  # API routes
-│   │   │       ├── fhe/
-│   │   │       │   ├── route.ts      # FHE operations route
-│   │   │       │   ├── encrypt/route.ts  # Encryption endpoint
-│   │   │       │   ├── decrypt/route.ts  # Decryption endpoint
-│   │   │       │   └── compute/route.ts  # Computation endpoint
-│   │   │       └── keys/route.ts     # Key management
-│   │   ├── components/               # React components
-│   │   │   ├── ui/                   # Base UI components
-│   │   │   │   ├── Button.tsx
-│   │   │   │   ├── Input.tsx
-│   │   │   │   └── Card.tsx
-│   │   │   ├── fhe/                  # FHE feature components
-│   │   │   │   ├── FHEProvider.tsx
-│   │   │   │   ├── EncryptionDemo.tsx
-│   │   │   │   ├── ComputationDemo.tsx
-│   │   │   │   └── KeyManager.tsx
-│   │   │   └── examples/             # Use case examples
-│   │   │       ├── BankingExample.tsx
-│   │   │       └── MedicalExample.tsx
-│   │   ├── lib/                      # Utility libraries
-│   │   │   ├── fhe/                  # FHE integration
-│   │   │   │   ├── client.ts         # Client-side FHE
-│   │   │   │   ├── server.ts         # Server-side FHE
-│   │   │   │   ├── keys.ts           # Key management
-│   │   │   │   └── types.ts          # Type definitions
-│   │   │   └── utils/                # Utility functions
-│   │   │       ├── security.ts       # Security utilities
-│   │   │       └── validation.ts     # Validation utilities
-│   │   ├── hooks/                    # Custom hooks
-│   │   │   ├── useFHE.ts
-│   │   │   ├── useEncryption.ts
-│   │   │   └── useComputation.ts
-│   │   ├── types/                    # TypeScript types
-│   │   │   ├── fhe.ts
-│   │   │   └── api.ts
+│   │   ├── src/
+│   │   │   ├── app/                  # App Router (Next.js 14)
+│   │   │   │   ├── layout.tsx        # Root layout
+│   │   │   │   ├── page.tsx          # Main demo page
+│   │   │   │   ├── providers.tsx     # FHEVM Provider setup
+│   │   │   │   └── api/              # API routes
+│   │   │   │       ├── fhe/
+│   │   │   │       │   ├── route.ts  # FHE operations route
+│   │   │   │       │   ├── encrypt/route.ts  # Encryption endpoint
+│   │   │   │       │   ├── decrypt/route.ts  # Decryption endpoint
+│   │   │   │       │   └── compute/route.ts  # Computation endpoint
+│   │   │   │       └── keys/route.ts # Key management
+│   │   │   ├── components/           # React components
+│   │   │   │   ├── ui/               # Base UI components
+│   │   │   │   │   ├── Button.tsx
+│   │   │   │   │   ├── Input.tsx
+│   │   │   │   │   └── Card.tsx
+│   │   │   │   ├── fhe/              # FHE feature components
+│   │   │   │   │   ├── FHEProvider.tsx
+│   │   │   │   │   ├── EncryptionDemo.tsx
+│   │   │   │   │   ├── ComputationDemo.tsx
+│   │   │   │   │   └── KeyManager.tsx
+│   │   │   │   └── examples/         # Use case examples
+│   │   │   │       ├── BankingExample.tsx
+│   │   │   │       └── MedicalExample.tsx
+│   │   │   ├── lib/                  # Utility libraries
+│   │   │   │   ├── fhe/              # FHE integration
+│   │   │   │   │   ├── client.ts     # Client-side FHE
+│   │   │   │   │   ├── server.ts     # Server-side FHE
+│   │   │   │   │   ├── keys.ts       # Key management
+│   │   │   │   │   └── types.ts      # Type definitions
+│   │   │   │   └── utils/            # Utility functions
+│   │   │   │       ├── security.ts   # Security utilities
+│   │   │   │       └── validation.ts # Validation utilities
+│   │   │   ├── hooks/                # Custom hooks
+│   │   │   │   ├── useFHE.ts
+│   │   │   │   ├── useEncryption.ts
+│   │   │   │   └── useComputation.ts
+│   │   │   ├── types/                # TypeScript types
+│   │   │   │   ├── fhe.ts
+│   │   │   │   └── api.ts
+│   │   │   └── styles/               # Style files
+│   │   │       └── globals.css
 │   │   ├── package.json
 │   │   └── README.md
-│   ├── RentalMatching/               # Production rental platform
+│   ├── rental-matching-react/        # React rental platform
+│   │   ├── src/
+│   │   │   ├── components/           # React components
+│   │   │   │   ├── WalletInfo.tsx    # Wallet connection UI
+│   │   │   │   ├── CreateListing.tsx # Create listing form
+│   │   │   │   ├── CreateRequest.tsx # Create request form
+│   │   │   │   ├── CreateMatch.tsx   # Match creation
+│   │   │   │   ├── Statistics.tsx    # Platform stats
+│   │   │   │   ├── UserActivity.tsx  # User's listings/requests
+│   │   │   │   └── StatusBar.tsx     # Status messages
+│   │   │   ├── hooks/                # Custom React hooks
+│   │   │   │   ├── useWallet.ts      # Wallet connection hook
+│   │   │   │   └── useContract.ts    # Contract interaction hook
+│   │   │   ├── lib/                  # Utility libraries
+│   │   │   │   └── contract.ts       # Contract ABI and types
+│   │   │   ├── App.tsx               # Main app component
+│   │   │   ├── main.tsx              # Entry point
+│   │   │   ├── index.css             # Global styles
+│   │   │   └── vite-env.d.ts         # Type declarations
+│   │   ├── index.html                # HTML template
+│   │   ├── vite.config.ts            # Vite configuration
+│   │   ├── tsconfig.json             # TypeScript config
+│   │   ├── package.json              # Dependencies
+│   │   └── README.md                 # Project documentation
+│   ├── RentalMatching/               # HTML rental platform
 │   └── README.md                     # Examples documentation
 │
 ├── contracts/                        # Example FHE contracts
@@ -383,11 +417,11 @@ src/
 
 #### Core Implementation Files
 
-**1. Root Layout (`app/layout.tsx`)**
+**1. Root Layout (`src/app/layout.tsx`)**
 
 ```typescript
 import { Providers } from './providers';
-import './globals.css';
+import '../styles/globals.css';
 
 export const metadata = {
   title: 'FHEVM Application',
@@ -409,7 +443,7 @@ export default function RootLayout({
 }
 ```
 
-**2. Providers Setup (`app/providers.tsx`)**
+**2. Providers Setup (`src/app/providers.tsx`)**
 
 ```typescript
 'use client';
@@ -432,7 +466,7 @@ export function Providers({ children }: { children: ReactNode }) {
 }
 ```
 
-**3. Client-Side FHE Library (`lib/fhe/client.ts`)**
+**3. Client-Side FHE Library (`src/lib/fhe/client.ts`)**
 
 ```typescript
 import { initFhevm } from '@fhevm/sdk/core';
@@ -469,7 +503,7 @@ export async function decryptValue(
 }
 ```
 
-**4. Custom FHE Hook (`hooks/useFHE.ts`)**
+**4. Custom FHE Hook (`src/hooks/useFHE.ts`)**
 
 ```typescript
 'use client';
@@ -524,7 +558,7 @@ export function useFHE() {
 }
 ```
 
-**5. Encryption Component (`components/fhe/EncryptionDemo.tsx`)**
+**5. Encryption Component (`src/components/fhe/EncryptionDemo.tsx`)**
 
 ```typescript
 'use client';
@@ -631,7 +665,7 @@ export function EncryptionDemo() {
 }
 ```
 
-**6. API Route for Encryption (`app/api/fhe/encrypt/route.ts`)**
+**6. API Route for Encryption (`src/app/api/fhe/encrypt/route.ts`)**
 
 ```typescript
 import { NextRequest, NextResponse } from 'next/server';
@@ -669,7 +703,7 @@ export async function POST(request: NextRequest) {
 }
 ```
 
-**7. Main Page (`app/page.tsx`)**
+**7. Main Page (`src/app/page.tsx`)**
 
 ```typescript
 'use client';
@@ -721,7 +755,7 @@ GATEWAY_URL=https://gateway.zama.ai
 
 #### Additional API Routes
 
-**Decryption API (`app/api/fhe/decrypt/route.ts`)**
+**Decryption API (`src/app/api/fhe/decrypt/route.ts`)**
 
 ```typescript
 import { NextRequest, NextResponse } from 'next/server';
@@ -769,7 +803,7 @@ export async function POST(request: NextRequest) {
 }
 ```
 
-**Computation API (`app/api/fhe/compute/route.ts`)**
+**Computation API (`src/app/api/fhe/compute/route.ts`)**
 
 ```typescript
 import { NextRequest, NextResponse } from 'next/server';
@@ -820,7 +854,7 @@ export async function POST(request: NextRequest) {
 
 #### Advanced Components
 
-**Key Manager Component (`components/fhe/KeyManager.tsx`)**
+**Key Manager Component (`src/components/fhe/KeyManager.tsx`)**
 
 ```typescript
 'use client';
@@ -874,7 +908,7 @@ export function KeyManager() {
 }
 ```
 
-**Computation Demo Component (`components/fhe/ComputationDemo.tsx`)**
+**Computation Demo Component (`src/components/fhe/ComputationDemo.tsx`)**
 
 ```typescript
 'use client';
@@ -982,7 +1016,7 @@ export function ComputationDemo() {
 }
 ```
 
-**Banking Example Component (`components/examples/BankingExample.tsx`)**
+**Banking Example Component (`src/components/examples/BankingExample.tsx`)**
 
 ```typescript
 'use client';
@@ -1065,7 +1099,7 @@ export function BankingExample() {
 }
 ```
 
-#### Type Definitions (`types/fhe.ts`)**
+#### Type Definitions (`src/types/fhe.ts`)**
 
 ```typescript
 export interface EncryptedValue {
@@ -1347,16 +1381,16 @@ npm run dev
 Visit `http://localhost:3000` to see the demo in action.
 
 **Key Files:**
-- `app/providers.tsx` - FhevmProvider setup
-- `app/page.tsx` - Main component using SDK hooks
-- `app/api/fhe/` - API routes for encryption/decryption
-- `components/fhe/` - Reusable FHE components
-- `lib/fhe/` - FHE utility functions
-- `hooks/` - Custom React hooks
+- `src/app/providers.tsx` - FhevmProvider setup
+- `src/app/page.tsx` - Main component using SDK hooks
+- `src/app/api/fhe/` - API routes for encryption/decryption
+- `src/components/fhe/` - Reusable FHE components
+- `src/lib/fhe/` - FHE utility functions
+- `src/hooks/` - Custom React hooks
 
-### 2. Rental Matching Platform (`examples/RentalMatching/`)
+### 2. Rental Matching Platform - HTML Version (`examples/RentalMatching/`)
 
-A production-ready privacy-preserving rental matching platform:
+A production-ready privacy-preserving rental matching platform built with vanilla HTML/JS:
 
 **Features:**
 - Anonymous property listings with encrypted data
@@ -1367,7 +1401,56 @@ A production-ready privacy-preserving rental matching platform:
 
 **Use Case:** Landlords and tenants can match without revealing sensitive information (prices, locations) until both parties confirm mutual interest.
 
-### 3. Additional Examples
+**Live Demo:** [https://simple-rental-matching.vercel.app/](https://simple-rental-matching.vercel.app/)
+
+### 3. Rental Matching Platform - React Version (`examples/rental-matching-react/`)
+
+A modern React implementation of the privacy-preserving rental matching platform:
+
+**Features:**
+- Built with React 18 and TypeScript for type safety
+- Vite for fast development and optimized builds
+- Custom React hooks for wallet and contract interactions
+- Component-based architecture for better code organization
+- Real-time event listeners for instant updates
+- Responsive design that works on all devices
+- Full integration with Ethers.js 6
+- FHE encryption for all sensitive data
+
+**Tech Stack:**
+- React 18 with TypeScript
+- Vite build tool
+- Ethers.js 6 for blockchain interaction
+- FHEVM for fully homomorphic encryption
+- CSS3 for styling
+
+**Running the React Version:**
+
+```bash
+# From the root directory
+cd examples/rental-matching-react
+
+# Install dependencies (if not using workspace)
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+Visit `http://localhost:3000` to see the React application.
+
+**Key Improvements over HTML Version:**
+- Better code organization with reusable components
+- Type safety with TypeScript
+- Custom hooks for cleaner state management
+- Improved developer experience with hot reload
+- Better testability and maintainability
+- Optimized production builds
+
+### 4. Additional Examples
 
 The `examples/README.md` file contains additional integration patterns including:
 - React 18 standalone example
@@ -1413,7 +1496,7 @@ Open `http://localhost:3000` to see:
 
 The Next.js example showcases the recommended integration pattern:
 
-**1. Provider Setup** (`examples/nextjs-demo/app/providers.tsx`)
+**1. Provider Setup** (`examples/nextjs-demo/src/app/providers.tsx`)
 ```typescript
 import { FhevmProvider } from '@fhevm/sdk/react';
 
@@ -1429,7 +1512,7 @@ export function Providers({ children }) {
 }
 ```
 
-**2. Using Hooks** (`examples/nextjs-demo/app/page.tsx`)
+**2. Using Hooks** (`examples/nextjs-demo/src/app/page.tsx`)
 ```typescript
 import { useFhevm, useEncrypt, useDecrypt } from '@fhevm/sdk/react';
 
@@ -1453,7 +1536,7 @@ export default function Home() {
 
 To adapt the examples for your own project:
 
-1. **Copy the provider setup** from `examples/nextjs-demo/app/providers.tsx`
+1. **Copy the provider setup** from `examples/nextjs-demo/src/app/providers.tsx`
 2. **Import the hooks** in your components
 3. **Adjust the configuration** (network, gateway URL, contract addresses)
 4. **Add your business logic** around encryption/decryption
